@@ -1,0 +1,21 @@
+Encapsulation : 
+ - object composed of data members and function members
+ - data members = properties of the object & function members = operations on the object
+
+Data hiding :
+WHAT ? 
+- Data members are only manipulated with the function members (functions are the tools)
+- Data members are hidden from the outside
+
+WHY ? 
+- Make sure that the object integrity is preserved, internal state (combination of all the data members) remains valid at all times
+-The user can't modificate the variable members without respecting the rules imposed by the function members
+- Reduces the coupling btw a class and the code
+- We can change ALL the internal state and it's behavior, it won't affect the code if the interface isn't change (ie the name of the function)
+
+Constructors :
+- Default constructor doesn't have any parameters
+- If data members aren't initialize, they contain random values
+- Use member initializer list in priority
+- Constructors and function defined inside the class are inline (function code is paste directly inside the code)
+- Box() = default; is the best way to define a default constructor

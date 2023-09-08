@@ -31,7 +31,9 @@ class Counter {
 private:
 	int counter_value;
 public:
-	Counter() : counter_value{ 0 } {}
+	Counter() : counter_value{ 0 } {
+		
+	}
 	void tick() {
 		++counter_value;
 	}
@@ -53,12 +55,14 @@ public:
 	int get_sum() { return sum; }
 };
 
+
 class Account {
 private:
 	double saldo;
 	static double interest_rate;
 
 public:
+	Account() : saldo{ 0 } {}
 	Account(double s) : saldo{ s } {}
 	void deposit(double value) { saldo += value; }
 	void withdraw(double value) { saldo -= value; }
@@ -129,10 +133,13 @@ int main(void) {
 	Account acc1(110.0), acc2(90.0);
 	acc1.add_interest(7.0);*/
 
-	/*Account a1(50), a2(400);
-	a1.add_interest(3);*/
+	double value;
+	cin >> value;
+	Account a1(value), a2(400);
+	a1.add_interest(3);
+	cout << a1.get_saldo() << endl;
 
-	Point p1(0, 1), p2(1, 2);
+	/*Point p1(0, 1), p2(1, 2);
 	cout << "P1 coord. : ";
 	p1.print();
 	cout << endl;
@@ -142,7 +149,7 @@ int main(void) {
 	cout << "Distance between P1 and P2 : " << p1.distance_to_point(p2) << endl;
 
 	Rectangle rec(p1, 2, 4);
-	rec.print_corners();
+	rec.print_corners();*/
 
 	return 0;
 }
