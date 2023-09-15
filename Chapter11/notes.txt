@@ -1,10 +1,11 @@
 Encapsulation : 
  - object composed of data members and function members
+ - a class in our own data type
  - data members = properties of the object & function members = operations on the object
 
 Data hiding :
 WHAT ? 
-- Data members are only manipulated with the function members (functions are the tools)
+- Data members are only manipulated with the function members (functions are the tools) accessible IN the class
 - Data members are hidden from the outside
 
 WHY ? 
@@ -14,8 +15,61 @@ WHY ?
 - We can change ALL the internal state and it's behavior, it won't affect the code if the interface isn't change (ie the name of the function)
 
 Constructors :
+- Called everytime an object declaration
 - Default constructor doesn't have any parameters
 - If data members aren't initialize, they contain random values
-- Use member initializer list in priority
+- Use member initializer list in priority, instead of default values
 - Constructors and function defined inside the class are inline (function code is paste directly inside the code)
 - Box() = default; is the best way to define a default constructor
+
+Explicit constructors :
+- Give to the constructor to not implicitly convert types 
+- example : Complex num(3.0, 0.0); num == 3.0; is true if non explicit constructor, false if explicit
+
+Delegating constructor :
+- Delegates the creation of an object to another constructor
+- Must be the only element in the initializer list 
+- example : Box(int size) : Box(size,size,size) {}
+
+Copy constructor : 
+- Initializes and object with an existing object
+- Box(const &Box box) : length{box.length}, ... {}
+- /!\ use &Box, otherwise, you create an infinite loop. Indeed, with value parameter, the Box constructor is passed, creating a loop.
+
+This keyword :
+- Pointer to the current OBJECT 
+- Contained in every non static function member
+- Can be called even if no object created
+- Allows cascading calls, but prefer to return a reference of the object (return *this)
+
+Const :
+- const function can't modify data memebers !! (unless data member mutable)
+- getters should be const
+- const function indicates that the method doesn't affect the internal state of the object 
+
+Friend :
+- either for function or for classes
+- declared in the class, initialized elsewhere
+- have access to the private part of the class
+- used for intertwinend classes
+- undermine the data hidding principle, and denatures OOP, because function outside can access the private data members
+
+Static member :
+- Only one variable for all the instances 
+- Doesn't contribute to the object size
+- Member shared between all member of a same class
+- Initialized at zero when declared
+
+Reference :
+- Passing object reference is more optimized for the function
+
+Destructor :
+- Called when an object is destroyed
+- default destructor is supplied
+
+Nested Class :
+- class defined another class definition
+
+
+
+ 
