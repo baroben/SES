@@ -1,0 +1,31 @@
+Exception are like SOS bottle thrown in the sea.
+
+Throw by value - no new'ed or local pointer 
+Catch by reference - Catching by value may slice the important information
+
+Rethrowing with only throw at the end of the catch block
+
+Unhandled exceptions will cause std::terminate() to be called, the program shuts down
+
+catch(..) catches all the exceptions but can't rethrow
+
+Destructors can't throw errors
+
+Ressources leaks can happen the exception happens before the memory allocation but before the memory cleaning. 
+The solution is to put another try catch braket on the allocation. If an error occur : just free the memory in the catch!
+
+e RAII (Resource Acquisition Is Initialization) est un idéom (ou modèle de conception) de programmation largement utilisé en C++ pour gérer efficacement les ressources, telles que la mémoire allouée dynamiquement, les fichiers, les verrous, etc. L'idée fondamentale du RAII est de lier la durée de vie d'une ressource à celle d'un objet, de sorte que lorsque l'objet est créé, la ressource est acquise (initialisée), et lorsque l'objet est détruit, la ressource est automatiquement libérée (désallouée ou fermée).
+
+Voici comment le RAII fonctionne et pourquoi il est bénéfique :
+
+Acquisition de ressources lors de l'initialisation : Lorsque vous créez une instance d'une classe RAII, le constructeur de cette classe est utilisé pour acquérir la ressource nécessaire. Par exemple, si vous créez un objet de classe RAII pour gérer une mémoire allouée dynamiquement, le constructeur peut allouer cette mémoire.
+
+Libération de ressources lors de la destruction : Lorsque l'objet RAII sort de portée (par exemple, à la fin d'un bloc ou d'une fonction), son destructeur est automatiquement appelé. C'est dans le destructeur que vous libérez la ressource, ce qui garantit que la ressource est toujours libérée, même en cas d'exception ou de sortie anticipée du bloc.
+
+Gestion des exceptions : Le RAII gère automatiquement les exceptions. Si une exception est lancée à l'intérieur du bloc où l'objet RAII est créé, le destructeur de l'objet sera appelé, ce qui garantit que la ressource est libérée correctement, même en cas d'erreur.
+
+Simplicité et sécurité : Le RAII simplifie considérablement la gestion des ressources, car vous n'avez pas besoin de vous soucier explicitement de la libération des ressources. Cela rend le code plus sûr, car les ressources sont libérées de manière fiable, et moins sujet aux fuites de ressources.
+
+Every dynamics objects should be wrapped in a RAII object !
+
+We can create our own exception that derived from the exception object
